@@ -41,7 +41,6 @@ public class DemoAuto extends LinearOpMode {
 
             position = detector.position;
             telemetry.addData("Positon", position);
-            telemetry.addData("totalA", detector.totalA);
             telemetry.update();
 
             dashboardTelemetry.addData("position", position);
@@ -52,6 +51,15 @@ public class DemoAuto extends LinearOpMode {
 
 
         waitForStart();
+
+        if(position.equals("Location 1")) {
+          //Goes to position 1
+        } else if (position.equals("Location 2")) {
+          //Goes to position 2
+        } else if (position.equals("Location 3")) {
+            //Goes to position 3
+        }
+
 
         move(62,0.5);
 
