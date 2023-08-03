@@ -41,7 +41,7 @@ public class DemoAuto extends LinearOpMode {
 
             position = detector.position;
             telemetry.addData("Positon", position);
-            telemetry.addData("totalA", detector.totalA); //ajlfjksjlksad
+            telemetry.addData("totalA", detector.totalA);
             telemetry.update();
 
             dashboardTelemetry.addData("position", position);

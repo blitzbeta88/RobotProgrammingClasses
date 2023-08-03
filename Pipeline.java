@@ -36,8 +36,10 @@ public class Pipeline extends OpenCvPipeline {
         }
 
         Mat matA = workingMatrix.submat(matAcolumnStart, matAcolumnEnd, matArowStart, matArowEnd);
+        Mat matB = workingMatrix.submat(matAcolumnStart, matAcolumnEnd, matArowStart, matArowEnd);
 
         Imgproc.rectangle(workingMatrix, new Rect(matAcolumnStart, matArowStart, (matArowEnd - matArowStart), (matAcolumnEnd - matArowEnd)), new Scalar(0,255,0));
+
 
         //Average pixel color for each color
         totalA = Core.sumElems(matA).val[0];

@@ -14,6 +14,7 @@ public class Hardware {
     public DcMotor demoWheel2;
     public DcMotor demoWheel3;
     public DcMotor demoWheel4;
+    public DcMotor demoMotor;
 
     public Servo demoServo;
 
@@ -72,6 +73,16 @@ public class Hardware {
             demoWheel4.setPower(0);
         } catch (Exception p_exception) {
             demoWheel4 = null;
+        }
+
+        try {
+            demoMotor = hwMap.get(DcMotor.class, "demoMotor");
+            demoMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            demoMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            demoMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            demoMotor.setPower(0);
+        } catch (Exception p_exception) {
+            demoMotor = null;
         }
 
         try {
