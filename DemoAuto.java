@@ -67,5 +67,48 @@ public class DemoAuto extends LinearOpMode {
         robot.demoWheel4.setMode((DcMotor.RunMode.RUN_USING_ENCODER));
     }
 
+    public void turn(double degrees) {
+
+        double currentAngle = robot.gyro.getAngularOrientation().firstAngle;
+        double finalAngle = currentAngle + degrees;
+        if (finalAngle > 180) {
+            finalAngle -= 360;
+        } else if (finalAngle < -180) {
+            finalAngle += 360;
+        }
+
+        if (degrees >= 0) {
+            double errorOfDegree = degrees;
+            while (Math.abs(errorOfDegree) > 1) {
+                robot.setPower(-0.0055 * errorOfDegree,-0.0055 * errorOfDegree,0.0055 * errorOfDegree,0.0055 * errorOfDegree);
+                errorOfDegree = finalAngle - robot.gyro.getAngularOrientation().firstAngle;
+                if (errorOfDegree > 180) {
+                    errorOfDegree -= 360;
+                } else if (errorOfDegree < -180) {
+                    errorOfDegree += 360;
+                }
+                errorOfDegree = Math.abs(errorOfDegree);
+            }
+        } else {
+            double errorOfDegree = degrees;
+            while (Math.abs(errorOfDegree) > 1) {
+                robot.setPower(0.0055 * errorOfDegree, 0.0055 * errorOfDegree, -0.0055 * errorOfDegree, -0.0055 * errorOfDegree);
+                errorOfDegree = finalAngle - robot.gyro.getAngularOrientation().firstAngle;
+                if (errorOfDegree > 180) {
+                    errorOfDegree -= 360;
+                } else if (errorOfDegree < -180) {
+                    errorOfDegree += 360;
+                }
+                errorOfDegree = Math.abs(errorOfDegree);
+            }
+        }
+        robot.setPower(0,0,0,0);
+        sleep(500);
+
+
+    }
+
+
+
 
 }

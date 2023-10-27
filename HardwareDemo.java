@@ -66,7 +66,7 @@ public class HardwareDemo {
             demoWheel4 = null;
         }
         try {
-           demoServo = hwMap.get(Servo.class, "demoServo")
+           demoServo = hwMap.get(Servo.class, "demoServo");
         } catch(Exception p_exception) {
             demoServo = null;
         }
