@@ -103,7 +103,8 @@ public class DemoAuto extends LinearOpMode {
             }
         }
         robot.setPower(0,0,0,0);
-        sleep(500);
+        sleep(500
+        );
 
 
     }
